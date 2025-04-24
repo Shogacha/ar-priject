@@ -1,44 +1,100 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>AR Визитка — Dls.Web.Tj</title>
-    <script type="module" src="mindar/aframe.min.js"></script>
-    <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+<head>
+  <title>AR Визитка — Dls.Web.Tj</title>
+  <script type="module" src="mindar/aframe.min.js"></script>
+  <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+  <script type="module" src="mindar/mindar-image-aframe.prod.js"></script>
 
-    <script type="module" src="mindar/mindar-image-aframe.prod.js"></script>
-    
-    <style>
-      body, html {
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-      }
-      #ar-container {
-        width: 100vw;
-        height: 100vh;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="ar-container">
-<a-scene
-  mindar-image="imageTargetSrc: marker/targets.mind; autoStart: true"
-  embedded
-  color-space="sRGB"
-  renderer="colorManagement: true, physicallyCorrectLights"
-  vr-mode-ui="enabled: false"
-  device-orientation-permission-ui="enabled: true"
->
-  <a-assets>
-    <video id="video" autoplay loop muted playsinline src="marker/ar-video.mp4"></video>
-  </a-assets>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      font-family: 'Roboto', sans-serif;
+    }
 
-  <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+    #ar-container {
+      width: 100vw;
+      height: 100vh;
+    }
 
-  <a-entity mindar-image-target="targetIndex: 0">
-    <a-video src="#video" width="1" height="0.6" position="0 0 0"></a-video>
-  </a-entity>
-</a-scene>
-</div>
-  </body>
+    #play-button {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      z-index: 9999;
+      padding: 12px 20px;
+      background-color: #27ae60;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background 0.3s ease;
+    }
+
+    #play-button:hover {
+      background-color: #1e8449;
+    }
+
+    .mindar-ui-overlay {
+      background: rgba(0, 0, 0, 0.6) !important;
+    }
+
+    .mindar-ui-scanning {
+      border: 3px dashed #27ae60 !important;
+      animation: scanPulse 2s infinite;
+    }
+
+    @keyframes scanPulse {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.05); opacity: 0.6; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <div id="ar-container">
+    <button id="play-button">▶️ Включить звук</button>
+
+    <a-scene
+      mindar-image="imageTargetSrc: marker/targets.mind; autoStart: true"
+      embedded
+      color-space="sRGB"
+      renderer="colorManagement: true, physicallyCorrectLights"
+      vr-mode-ui="enabled: false"
+      device-orientation-permission-ui="enabled: true"
+    >
+      <a-assets>
+        <video id="video" autoplay playsinline loop src="marker/ar-video.mp4"></video>
+      </a-assets>
+
+      <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+
+      <a-entity mindar-image-target="targetIndex: 0">
+        <a-video 
+          src="#video" 
+          width="0.85" 
+          height="0.53" 
+          position="0 0 0" 
+          rotation="0 0 0" 
+          scale="1 1 1"
+        ></a-video>
+      </a-entity>
+    </a-scene>
+  </div>
+
+  <script>
+    const playButton = document.getElementById('play-button');
+    const video = document.getElementById('video');
+
+    playButton.addEventListener('click', () => {
+      video.muted = false;
+      video.play();
+      playButton.style.display = 'none';
+    });
+  </script>
+</body>
 </html>
