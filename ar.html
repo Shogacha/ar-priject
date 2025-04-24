@@ -60,7 +60,13 @@
     <button id="play-button">▶️ Включить звук</button>
 
     <a-scene
-      mindar-image="imageTargetSrc: marker/targets.mind; autoStart: true"
+      mindar-image="
+        imageTargetSrc: marker/targets.mind;
+        autoStart: true;
+        filterMinCF: 0.0001;
+        filterBeta: 0.02;
+        smoothTracking: true
+      "
       embedded
       color-space="sRGB"
       renderer="colorManagement: true, physicallyCorrectLights"
@@ -74,6 +80,7 @@
       <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
       <a-entity mindar-image-target="targetIndex: 0">
+        <!-- Настроено точно под визитку размером примерно 85mm x 53mm -->
         <a-video 
           src="#video" 
           width="0.85" 
@@ -81,6 +88,7 @@
           position="0 0 0" 
           rotation="0 0 0" 
           scale="1 1 1"
+          transparent="true"
         ></a-video>
       </a-entity>
     </a-scene>
