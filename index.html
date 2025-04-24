@@ -5,8 +5,110 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dls.Web.Tj — AR-платформа</title>
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #ffffff;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: #0d0d0d;
+      color: #fff;
+      padding: 40px 20px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+
+    header a {
+      display: inline-block;
+      padding: 12px 24px;
+      background: #27ae60;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+
+    header a:hover {
+      background: #1e8449;
+    }
+
+    main {
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    #features {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    #features h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    #features ul {
+      list-style-type: none;
+    }
+
+    #features li {
+      font-size: 1.2rem;
+      padding: 12px;
+      background: #f2f2f2;
+      margin: 10px 0;
+      border-radius: 8px;
+    }
+
+    footer {
+      background-color: #222;
+      color: #ccc;
+      text-align: center;
+      padding: 20px 10px;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.8rem;
+      }
+      header p {
+        font-size: 1rem;
+      }
+      header a {
+        padding: 10px 18px;
+        font-size: 0.9rem;
+      }
+      #features h2 {
+        font-size: 1.5rem;
+      }
+      #features li {
+        font-size: 1rem;
+      }
+    }
+  </style>
   <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
 </head>
 <body>
   <header>
